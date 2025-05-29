@@ -906,16 +906,15 @@
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script>
         // new DataTable('#example');
+            new DataTable('#example', {
+            initComplete: function () {
+                let api = this.api();
 
-          new DataTable('#example', {
-   initComplete: function () {
-       let api = this.api();
-
-       api.on('click', 'tbody td', function () {
-           api.search(this.innerHTML).draw();
-       });
-   }
-});
+                api.on('click', 'tbody td', function () {
+                    api.search(this.innerHTML).draw();
+                });
+            }
+          });
     </script>
   </body>
 </html>
