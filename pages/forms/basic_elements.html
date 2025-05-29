@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
   </head>
   <body>
     <div class="container-scroller">
@@ -610,5 +612,20 @@
     <script src="../../assets/js/typeahead.js"></script>
     <script src="../../assets/js/select2.js"></script>
     <!-- End custom js for this page -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
+    <script>
+        // new DataTable('#example');
+            new DataTable('#example', {
+            initComplete: function () {
+                let api = this.api();
+
+                api.on('click', 'tbody td', function () {
+                    api.search(this.innerHTML).draw();
+                });
+            }
+          });
+    </script>
   </body>
 </html>
