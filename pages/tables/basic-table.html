@@ -905,7 +905,17 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script>
-         new DataTable('#example');
+        // new DataTable('#example');
+
+          new DataTable('#example', {
+   initComplete: function () {
+       let api = this.api();
+
+       api.on('click', 'tbody td', function () {
+           api.search(this.innerHTML).draw();
+       });
+   }
+});
     </script>
   </body>
 </html>
